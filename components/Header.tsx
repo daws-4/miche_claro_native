@@ -3,6 +3,7 @@ import { View, Text, Pressable, Image } from 'react-native';
 import { useRouter } from 'expo-router';
 import Feather from '@expo/vector-icons/Feather';
 import ThemeToggle from './ThemeToggle';
+import ThemeToggleNew from './ThemeToggleNew';
 import { BlurView } from 'expo-blur';
 import useThemeColors from '@/app/contexts/ThemeColors';
 import SlideUp from './SlideUp';
@@ -44,7 +45,7 @@ export default function Header({ showBackButton = false, title = '', hasAvatar =
                         <Text className="text-neutral-900 dark:text-neutral-50 text-2xl font-bold">{title}</Text>
                     )}
                 </View>
-                <ThemeToggle />
+                <ThemeToggleNew />
             </View>
             <SlideUp visible={showSlideUp} onClose={() => setShowSlideUp(false)} />
         </>
