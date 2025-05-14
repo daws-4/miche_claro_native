@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
+import React, { createContext, useContext } from 'react';
 import { useColorScheme } from 'nativewind';
 
 type ThemeContextType = {
@@ -9,23 +9,11 @@ type ThemeContextType = {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 export const ThemeProvider = ({ children }: { children: React.ReactNode }) => {
-  const { colorScheme, toggleColorScheme, setColorScheme } = useColorScheme();
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-
-    setColorScheme('light');
-    setIsDark(false);
-  }, []);
-
-  const toggleTheme = () => {
-    const next = isDark ? 'light' : 'dark';
-    setColorScheme(next);
-    setIsDark(!isDark);
-  };
+  const { colorScheme, toggleColorScheme } = useColorScheme();
+  const isDark = colorScheme === 'dark';
 
   return (
-    <ThemeContext.Provider value={{ isDark, toggleTheme }}>
+    <ThemeContext.Provider value={{ isDark, toggleTheme: toggleColorScheme }}>
       {children}
     </ThemeContext.Provider>
   );

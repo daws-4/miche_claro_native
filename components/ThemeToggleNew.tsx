@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
-import { View, Pressable, Animated, TouchableOpacity } from 'react-native';
+import { View, Pressable, Animated, TouchableOpacity, InteractionManager } from 'react-native';
 import { useTheme } from 'app/contexts/ThemeContext';
-import { Feather } from '@expo/vector-icons';
+import Feather from '@expo/vector-icons/Feather';
 import useThemeColors from '@/app/contexts/ThemeColors';
 
 interface ThemeToggleProps {
@@ -13,21 +13,18 @@ interface ThemeToggleProps {
 const ThemeToggleNew: React.FC<ThemeToggleProps> = ({ value, onChange, className = '' }) => {
   const { isDark, toggleTheme } = useTheme();
   const colors = useThemeColors();
-  const slideAnim = useRef(new Animated.Value(value !== undefined ? (value ? 6 : 6) : (isDark ? 6 : 6))).current;
+  const slideAnim = useRef(new Animated.Value(value !== undefined ? (value ? 0 : 0.5) : (isDark ? 0 : 0.5))).current;
   const [isAnimating, setIsAnimating] = useState(false);
 
   const handlePress = () => {
     if (isAnimating) return;
     setIsAnimating(true);
-
     const newValue = value !== undefined ? !value : !isDark;
-
     if (onChange) {
       onChange(newValue);
     } else {
       toggleTheme();
     }
-
     // Animate the switch
     Animated.spring(slideAnim, {
       toValue: newValue ? 6 : 0.5,
@@ -40,30 +37,26 @@ const ThemeToggleNew: React.FC<ThemeToggleProps> = ({ value, onChange, className
   const isActive = value !== undefined ? value : isDark;
 
   return (
-    <TouchableOpacity
-      activeOpacity={0.7}
+    <TouchableOpacity 
       onPress={handlePress}
       className={`flex-row items-center py-1 ${className}`}
     >
       <View className="w-20 h-10 rounded-full flex-row items-center justify-between">
-        <View className="absolute w-full h-full rounded-full bg-neutral-300/50 dark:bg-dark-secondary/80" />
-
+        <View className="absolute w-full h-full rounded-full bg-neutral-200 dark:bg-dark-secondary" />
+        
+        {/* Sun icon on left */}
         <View className="z-10 w-8 h-8 items-center justify-center ml-1">
           <Feather name="sun" size={16} color={isActive ? colors.icon : colors.icon} />
         </View>
-
+        
+        {/* Moon icon on right */}
         <View className="z-10 w-8 h-8 items-center justify-center mr-1">
-          <Feather name="moon" size={16} color={!isActive ? colors.icon : colors.icon} />
+            <Feather name="moon" size={16} color={!isActive ? colors.icon : colors.icon} />
         </View>
-
+        
+        {/* Animated thumb */}
         <Animated.View
           style={{
-            shadowColor: '#000',
-            shadowOffset: { width: 0, height: 2 },
-            shadowOpacity: 0.1,
-            shadowRadius: 1,
-            elevation: 5,
-
             transform: [{
               translateX: slideAnim.interpolate({
                 inputRange: [0, 1],

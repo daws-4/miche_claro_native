@@ -14,15 +14,16 @@ export default function Home() {
     return (
         <>
             <Header hasAvatar />
-            <ScrollView style={{ paddingTop: insets.top + 80 }} className='px-5 pt-10 bg-light-primary dark:bg-dark-primary'>
+            <ScrollView style={{ paddingTop: insets.top + 80 }} className='px-5 pt-10  bg-light-primary dark:bg-dark-primary'>
                 <View className='mb-14 mt-10'>
                     <Text className='text-4xl font-bold dark:text-white'>Hello there!</Text>
                     <Text className='text-neutral-600 dark:text-neutral-400 text-lg'>Welcome to my playground</Text>
                 </View>
                 <LinkItem href='/screens/onboarding' icon='copy' title='Onboarding' description='introduction slider' />
                 <LinkItem href='/screens/masonry' icon='grid' title='Masonry grid' description='Simple image or card layout' />
+                <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
                 <LinkItem href='/' icon='calendar' comingSoon title='Calendar' description='Minimal and clean' />
-                <LinkItem href='/' icon='square' comingSoon title='Cards' description='Various card layouts' />
+               
             </ScrollView>
         </>
     );

@@ -8,6 +8,7 @@ export const useThemeColors = () => {
     bg: isDark ? '#171717' : '#ffffff',
     invert: isDark ? '#000000' : '#ffffff',
     secondary: isDark ? '#323232' : '#F5F5F5',
+    gradient: isDark ? ['#222', '#444'] : ['#efefef', '#ffffff'],
   };
 };
 
