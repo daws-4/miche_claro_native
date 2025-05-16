@@ -13,19 +13,20 @@ export default function VideoCardScreen() {
             >
                 <View className="space-y-6">
                     <VideoCard
-                        videoUrl="https://videos.pexels.com/video-files/10994873/10994873-sd_360_640_25fps.mp4"
-                        title="Gradient"
-                        description="Animated colors"
-                        duration="10:00"
-                        onPress={() => console.log('Second video pressed')}
-                    />
-                    <VideoCard
                         videoUrl="https://videos.pexels.com/video-files/9669111/9669111-sd_360_640_25fps.mp4"
-                        title="Beautiful Nature"
+                        title="Happy Friday"
                         description="Explore the wonders of nature"
                         duration="2:45"
                         onPress={() => console.log('First video pressed')}
                     />
+                    <VideoCard
+                        videoUrl="https://videos.pexels.com/video-files/10994873/10994873-sd_360_640_25fps.mp4"
+                        title="Happy Gradient"
+                        description="Animated colors"
+                        duration="10:00"
+                        onPress={() => console.log('Second video pressed')}
+                    />
+
 
 
                 </View>
