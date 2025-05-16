@@ -1,6 +1,6 @@
 # Thomino's playground
 
-![Get full Expo apps on www.native-templates.com - 1-2 new templates every month](assets/img/readme/showcase.jpg)
+![Get full Expo apps on www.native-templates.com - 1-2 new templates every month](assets/img/readme/readme.jpg)
 [Visit www.native-templates.com](https://www.native-templates.com)
 
 Just playing with react native and expo. Feel free to use anything anywhere
@@ -23,10 +23,8 @@ npx expo start -c
 - Light/dark theme support
 - Masonry grid
 - Onboarding slider
+- Counter card
 - Will be adding many more on the go
-
-## Support
-[Buy me a beer on Buy Me a Coffee :)](https://buymeacoffee.com/thomino)
 
 
 ## License
