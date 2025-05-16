@@ -1,5 +1,8 @@
 # Thomino's playground
 
+![Get full Expo apps on www.native-templates.com - 1-2 new templates every month](assets/img/readme/showcase.jpg)
+[Visit www.native-templates.com](https://www.native-templates.com)
+
 Just playing with react native and expo. Feel free to use anything anywhere
 
 ## Getting Started
