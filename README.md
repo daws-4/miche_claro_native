@@ -25,6 +25,7 @@ npx expo start -c
 - Masonry grid
 - Onboarding slider
 - Counter card
+- Video expandable card
 - Will be adding many more on the go
 
 

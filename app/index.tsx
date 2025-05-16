@@ -22,6 +22,7 @@ export default function Home() {
                 <LinkItem href='/screens/onboarding' icon='copy' title='Onboarding' description='introduction slider' />
                 <LinkItem href='/screens/masonry' icon='grid' title='Masonry grid' description='Simple image or card layout' />
                 <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
+                <LinkItem href='/screens/video-card' icon='play' title='Video card' description='Expandable card' />
                 <LinkItem href='/' icon='calendar' comingSoon title='Calendar' description='Minimal and clean' />
                
             </ScrollView>
