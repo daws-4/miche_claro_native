@@ -24,25 +24,20 @@ export default function VideoCard({
     const [error, setError] = useState<string | null>(null);
     const [expanded, setExpanded] = useState(false);
     
-    // Animation values
     const fadeAnim = useRef(new Animated.Value(1)).current;
     const heightAnim = useRef(new Animated.Value(220)).current;
     const translateYAnim = useRef(new Animated.Value(-20)).current;
     
-    // Create player with autoplay enabled
     const player = useVideoPlayer(videoUrl, player => {
         player.loop = true;
-        // Always play video
         player.play();
     });
     
-    // Handle toggle expand/collapse
     const handleToggle = () => {
         const newExpanded = !expanded;
         setExpanded(newExpanded);
         
         if (newExpanded) {
-            // Expand animations
             Animated.parallel([
                 Animated.timing(fadeAnim, {
                     toValue: 0,
@@ -64,9 +59,7 @@ export default function VideoCard({
                 })
             ]).start();
             
-            // Video is already playing
         } else {
-            // Collapse animations
             Animated.parallel([
                 Animated.timing(fadeAnim, {
                     toValue: 1,
@@ -88,10 +81,8 @@ export default function VideoCard({
                 })
             ]).start();
             
-            // Keep video playing
         }
-        
-        // Call the original onPress if provided
+
         if (onPress) onPress();
     };
 

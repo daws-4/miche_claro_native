@@ -17,14 +17,12 @@ export default function VideoCardScreen() {
                         title="Happy Friday"
                         description="Explore the wonders of nature"
                         duration="2:45"
-                        onPress={() => console.log('First video pressed')}
                     />
                     <VideoCard
                         videoUrl="https://videos.pexels.com/video-files/10994873/10994873-sd_360_640_25fps.mp4"
                         title="Happy Gradient"
                         description="Animated colors"
                         duration="10:00"
-                        onPress={() => console.log('Second video pressed')}
                     />
 
 

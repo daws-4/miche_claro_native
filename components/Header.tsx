@@ -45,7 +45,7 @@ export default function Header({ showBackButton = false, title = '', hasAvatar =
                         <Text className="text-neutral-900 dark:text-neutral-50 text-2xl font-bold">{title}</Text>
                     )}
                 </View>
-                <ThemeToggleNew />
+                <ThemeToggle />
             </View>
             <SlideUp visible={showSlideUp} onClose={() => setShowSlideUp(false)} />
         </>

@@ -23,7 +23,7 @@ export default function Home() {
                 <LinkItem href='/screens/masonry' icon='grid' title='Masonry grid' description='Simple image or card layout' />
                 <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
                 <LinkItem href='/screens/video-card' icon='play' title='Video card' description='Expandable card' />
-                <LinkItem href='/' icon='calendar' comingSoon title='Calendar' description='Minimal and clean' />
+                <LinkItem href='/screens/bottom-bar' icon='git-commit' title='Bottom bar' description='Switcher' />
                
             </ScrollView>
         </>
@@ -43,11 +43,11 @@ const LinkItem = (props: any) => {
                     shadowRadius: 3.84,
                     elevation: 5,
                 }}
-                className='flex-row items-center bg-white dark:bg-dark-secondary rounded-2xl p-6 mb-2'>
-                <Feather name={props.icon} size={24} color={colors.icon} />
+                className='flex-row items-center bg-white dark:bg-dark-secondary rounded-xl px-5 py-4 mb-2'>
+                <Feather name={props.icon} size={20} color={colors.icon} />
                 <View className='justify-center ml-4'>
                     <View className='flex-row items-center'>
-                        <Text className='text-lg font-bold dark:text-white'>{props.title}</Text>
+                        <Text className='text-base font-bold dark:text-white'>{props.title}</Text>
                         {props.comingSoon &&
                         <View className='bg-sky-500 rounded-full px-2 py-[3px] ml-2'>
                             <Text className='text-xs text-white'>Soon</Text>
