@@ -1,4 +1,4 @@
-/** @type {import('tailwindcss').Config} */ 
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
     "./App.{js,ts,tsx}",
@@ -11,6 +11,10 @@ module.exports = {
       fontFamily: {
         'outfit': ['Outfit_400Regular'],
         'outfit-bold': ['Outfit_700Bold'],
+        'noto': ['Noto_Sans_400Regular'],
+        'noto-bold': ['Noto_Sans_700Bold'],
+        lora: ['Lora_400Regular'],
+        'lora-bold': ['Lora_700Bold'],
       },
       spacing: {
         global: '16px'

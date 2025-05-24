@@ -40,7 +40,7 @@ export default function BottomBar({ showBackButton = false, title = '', hasAvata
                 shadowRadius: 10,
             }}
             className='rounded-full '>
-                <BlurView tint='dark' intensity={10} className='flex-row py-1.5 px-1  overflow-hidden rounded-full items-center justify-between bg-black/40'>
+                <BlurView tint='dark' intensity={10} className='flex-row py-1.5 px-1 w-[300px] overflow-hidden rounded-full items-center justify-between bg-black/40'>
                     <BottomBarItem 
                         icon='camera' 
                         title='Photo' 
@@ -95,8 +95,8 @@ const BottomBarItem = ({ icon, title, isActive, onPress }: BottomBarItemProps) =
                 toValue: isActive ? 100 : 40,
                 duration: 400,
                 easing: isActive 
-                    ? Easing.bezier(0.34, 1.56, 0.64, 1) // expand
-                    : Easing.bezier(0.34, 1.56, 0.64, 1),  
+                    ? Easing.bezier(0.1, 1, 0.94, 1) // expand
+                    : Easing.bezier(0.1, 1, 0.94, 1),  
                 useNativeDriver: false,
             }),
             Animated.timing(textOpacityAnim, {

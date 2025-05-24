@@ -24,7 +24,7 @@ export default function Home() {
                 <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
                 <LinkItem href='/screens/video-card' icon='play' title='Video card' description='Expandable card' />
                 <LinkItem href='/screens/bottom-bar' icon='git-commit' title='Bottom bar' description='Switcher' />
-               
+                <LinkItem href='/screens/journal-cards' icon='git-commit' title='Journal cards' description='Journal cards' />
             </ScrollView>
         </>
     );

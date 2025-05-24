@@ -10,7 +10,8 @@ export default function VideoCardScreen() {
         <>
             <Header showBackButton />
             <ImageBackground 
-            style={{ paddingBottom: insets.bottom, flex: 1, alignContent: 'flex-end', justifyContent: 'flex-end' }} source={{ uri: 'https://plus.unsplash.com/premium_photo-1668359407785-ac5dca1de611?q=80&w=3087&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }} className='flex-1'>
+            style={{ paddingBottom: insets.bottom, flex: 1, alignContent: 'flex-end', justifyContent: 'flex-end' }} 
+            source={{ uri: 'https://images.unsplash.com/photo-1511860810434-a92f84c6f01e?q=80&w=2592&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D' }} className='flex-1'>
                     <CameraButton />
                     <BottomBar />
 
