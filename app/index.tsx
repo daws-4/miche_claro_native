@@ -22,9 +22,10 @@ export default function Home() {
                 <LinkItem href='/screens/onboarding' icon='copy' title='Onboarding' description='introduction slider' />
                 <LinkItem href='/screens/masonry' icon='grid' title='Masonry grid' description='Simple image or card layout' />
                 <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
+                <LinkItem href='/screens/chart' icon='bar-chart' title='Chart counter' description='Eearnings chart' />
                 <LinkItem href='/screens/video-card' icon='play' title='Video card' description='Expandable card' />
                 <LinkItem href='/screens/bottom-bar' icon='git-commit' title='Bottom bar' description='Switcher' />
-                <LinkItem href='/screens/journal-cards' icon='git-commit' title='Journal cards' description='Journal cards' />
+                <LinkItem href='/screens/journal-cards' icon='square' title='Journal cards' description='Journal cards' />
             </ScrollView>
         </>
     );
