@@ -20,6 +20,7 @@ export default function Home() {
                     <Text className='text-neutral-600 dark:text-neutral-400 text-lg'>Welcome to my playground</Text>
                 </View>
                 <LinkItem href='/screens/onboarding' icon='copy' title='Onboarding' description='introduction slider' />
+                <LinkItem href='/screens/weather' icon='cloud' title='Weather' description='weather app' />
                 <LinkItem href='/screens/masonry' icon='grid' title='Masonry grid' description='Simple image or card layout' />
                 <LinkItem href='/screens/card' icon='square' title='Card' description='Card counter' />
                 <LinkItem href='/screens/chart' icon='bar-chart' title='Chart counter' description='Eearnings chart' />

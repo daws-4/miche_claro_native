@@ -24,8 +24,7 @@ export default function Header({ showBackButton = false, title = '', hasAvatar =
 
     return (
         <>
-            <View className=' px-5 py-6 flex-row bg-light-primary/80 dark:bg-black/80 items-center justify-between absolute top-0 left-0 right-0 z-50' style={{ paddingTop: insets.top + 10 }}>
-                <BlurView className='' tint='light' intensity={25} style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0 }} />
+            <View className=' px-5 py-6 flex-row bg-light-primary dark:bg-dark-primary items-center justify-between absolute top-0 left-0 right-0 z-50' style={{ paddingTop: insets.top + 10 }}>
                 <View className="flex-row items-center">
                     {showBackButton && (
                         <Pressable
