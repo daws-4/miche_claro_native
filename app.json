@@ -28,16 +28,19 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.thomino.thominoplayground"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
+      "predictiveBackGestureEnabled": false,
       "softwareKeyboardLayoutMode": "pan",
       "navigationBarColor": "transparent",
-      "navigationBarHidden": true
+      "navigationBarHidden": true,
+      "package": "com.thomino.thominoplayground"
     },
     "extra": {
       "router": {
