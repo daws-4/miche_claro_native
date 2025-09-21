@@ -17,6 +17,7 @@ export default function JournalCardsScreen() {
             <ScrollView className='flex-1 bg-light-primary dark:bg-black/80 p-2' style={{ paddingTop: insets.top + 80 }}>
                 <Counter currentDataIndex={currentDataIndex} setCurrentDataIndex={setCurrentDataIndex} />
                 <Chart currentDataIndex={currentDataIndex} />
+                
             </ScrollView>
         </>
     );

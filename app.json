@@ -1,11 +1,11 @@
 {
   "expo": {
     "newArchEnabled": true,
-    "name": "Thomino's playground",
-    "slug": "thomino-playground",
+    "name": "retashot",
+    "slug": "retashot",
     "version": "1.0.0",
     "runtimeVersion": "1.0.0",
-    "scheme": "thomino-playground",
+    "scheme": "retashot",
     "web": {
       "favicon": "./assets/favicon.png"
     },
@@ -14,7 +14,9 @@
     },
     "plugins": [
       "expo-router",
-      "expo-font"
+      "expo-font",
+      "expo-secure-store",
+      "expo-video"
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,25 +30,27 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.thomino.thominoplayground"
+      "bundleIdentifier": "com.retashot.app",
+      "supportsTablet": true
     },
     "android": {
+      "package": "com.retashot.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "predictiveBackGestureEnabled": false,
       "softwareKeyboardLayoutMode": "pan",
       "navigationBarColor": "transparent",
-      "navigationBarHidden": true,
-      "package": "com.thomino.thominoplayground"
+      "navigationBarHidden": true
     },
     "extra": {
       "router": {
         "origin": false
+      },
+      "eas": {
+        "projectId": "70472758-868e-4e6a-bf4c-87a24b22d26b"
       }
     },
-    "owner": "thomino"
+    "owner": "dawszz_4"
   }
 }

@@ -1,4 +1,6 @@
-import { StatusBar } from 'expo-status-bar';
+import Constants from 'expo-constants';
+console.log('Expo SDK Version:', Constants.expoVersion);
+console.log('Expo Config:', Constants.expoConfig);
 import { Link } from 'expo-router';
 import { ScrollView, View, Text, Pressable } from 'react-native';
 import Header from '@/components/Header';
@@ -16,7 +18,7 @@ export default function Home() {
             <Header hasAvatar />
             <ScrollView style={{ paddingTop: insets.top + 80 }} className='px-5 pt-10  bg-light-primary dark:bg-dark-primary'>
                 <View className='mb-14 mt-10'>
-                    <Text className='text-4xl font-bold dark:text-white'>Hello there!</Text>
+                    <Text className='text-4xl font-bold dark:text-red-500'>Hello there!</Text>
                     <Text className='text-neutral-600 dark:text-neutral-400 text-lg'>Welcome to my playground</Text>
                 </View>
                 <LinkItem href='/screens/onboarding' icon='copy' title='Onboarding' description='introduction slider' />

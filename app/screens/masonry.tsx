@@ -1,4 +1,3 @@
-import { StatusBar } from 'expo-status-bar';
 import { View, Text, Animated } from 'react-native';
 import Header from '@/components/Header';
 import { ImageBackground } from 'react-native';
