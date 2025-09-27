@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "650817826399",
+    "project_id": "micheclaro",
+    "storage_bucket": "micheclaro.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:650817826399:android:a61cc0a9071643627175ea",
+        "android_client_info": {
+          "package_name": "com.retashot.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "650817826399-p2svjfukgu39id38sidko9i6mnitvjav.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.retashot.app",
+            "certificate_hash": "0b3cf53424c72b03540495a969704033cdabd67b"
+          }
+        },
+        {
+          "client_id": "650817826399-u3o28atpe9sr83p94c391bnup59eoksm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDvg9Xx-RR8rdeklTE4WZNmWA1yAUmHKQg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "650817826399-u3o28atpe9sr83p94c391bnup59eoksm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

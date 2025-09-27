@@ -16,7 +16,8 @@
       "expo-router",
       "expo-font",
       "expo-secure-store",
-      "expo-video"
+      "expo-video",
+      "@react-native-google-signin/google-signin"
     ],
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -26,14 +27,13 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
       "bundleIdentifier": "com.retashot.app",
       "supportsTablet": true
     },
     "android": {
+      "googleServicesFile": "./google-services.json",
       "package": "com.retashot.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -41,7 +41,29 @@
       },
       "softwareKeyboardLayoutMode": "pan",
       "navigationBarColor": "transparent",
-      "navigationBarHidden": true
+      "navigationBarHidden": true,
+      "intentFilters": [
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "retashot",
+              "pathPrefix": "/login"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        },
+        {
+          "action": "VIEW",
+          "data": [
+            {
+              "scheme": "com.googleusercontent.apps.650817826399-u3o28atpe9sr83p94c391bnup59eoksm",
+              "pathPrefix": "/oauth2redirect"
+            }
+          ],
+          "category": ["BROWSABLE", "DEFAULT"]
+        }
+      ]
     },
     "extra": {
       "router": {
