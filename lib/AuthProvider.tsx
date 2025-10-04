@@ -14,8 +14,9 @@ interface AuthContextType {
 }
 
 const AuthContext = createContext<AuthContextType | null>(null);
-const ApiContext = createContext<string | null>(null);
-const API_BASE_URL = "https://miche-claro.vercel.app/api/mobile"; 
+export const ApiContext = createContext<string | null>(null);
+// const API_BASE_URL = "https://miche-claro.vercel.app/api/mobile/"; 
+const API_BASE_URL = "http://192.168.1.105:3000/api/mobile/";
 
 // Hook personalizado para acceder fácilmente al contexto
 export function useAuth() {
@@ -40,16 +41,16 @@ function useProtectedRoute(
         const inAuthGroup = segments[0] === "(auth)";
 
         if (!session && !inAuthGroup) {
-            router.replace("/(auth)/login");
+            router.replace("/login");
         } else if (session && inAuthGroup) {
             if (userType === "comprador") {
-                router.replace("/(usuarios)");
+                router.replace("/usuarios");
             } else if (userType === "vendedor") {
-                router.replace("/(vendedores)");
+                router.replace("/vendedores");
             } else if (userType === "delivery") {
-                router.replace("/(deliverys)");
+                router.replace("/deliverys");
             } else {
-                router.replace("/(usuarios)");
+                router.replace("/usuarios");
             }
         }
     }, [session, userType, segments, router, isLoading]);
@@ -58,7 +59,7 @@ function useProtectedRoute(
 // El Proveedor
 export function AuthProvider({ children }: { children: React.ReactNode }) {
     const [session, setSession] = useState<string | null>(null);
-    const [userType, setUserType] = useState<"comprador" | "vendedor" |  "delivery" | null>(null);
+    const [userType, setUserType] = useState<"comprador" | "vendedor" | "delivery" | null>(null);
     const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
@@ -111,8 +112,16 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     return (
         <AuthContext.Provider value={authActions}>
             <ApiContext.Provider value={API_BASE_URL}>
-            {children}
+                {children}
             </ApiContext.Provider>
         </AuthContext.Provider>
     );
+}
+
+export function useApiBase() {
+    const ctx = useContext(ApiContext);
+    if (!ctx) {
+        throw new Error('useApiBase must be used inside AuthProvider');
+    }
+    return ctx;
 }
