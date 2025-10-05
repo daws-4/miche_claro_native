@@ -1,6 +1,5 @@
 import { Dimensions, Pressable, View, Text } from "react-native";
 import React, { useState, useEffect } from "react";
-import { useAuth } from "@/lib/AuthProvider";
 
 import * as SecureStore from 'expo-secure-store';
 import {
@@ -42,7 +41,6 @@ const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'deli
     const [initializing, setInitializing] = useState(true);
 
     const [user, setUser] = useState<any>(null);
-    const auth = useAuth();
 
     // Handle user state changes
     function handleAuthStateChanged(user: any) {
@@ -76,12 +74,11 @@ const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'deli
         const result = await signInWithCredential(getAuth(), googleCredential);
 
         try {
-            // Try to obtain an ID token from Firebase user and persist session via AuthProvider
+            // Try to obtain profile from Firebase user and persist basic profile in SecureStore
             const GoogleUser = result.user;
-            if (GoogleUser && auth && typeof auth.signIn === 'function') {
+            if (GoogleUser) {
+                // Optionally get ID token (returned to caller if needed)
                 const idToken = await GoogleUser.getIdToken();
-                // Persist session token and user type via AuthProvider
-                await auth.signIn(idToken, defaultUserType);
 
                 // Persist additional profile fields in SecureStore
                 try {
@@ -92,6 +89,8 @@ const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'deli
                 } catch (e) {
                     console.warn('Could not save profile to SecureStore', e);
                 }
+                // Return idToken so caller can use it to sign in to backend if desired
+                return { result, idToken };
             }
         } catch (e) {
             // ignore persistence errors, but log
@@ -106,11 +105,6 @@ const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'deli
             await signOutGoogle();
         } catch (e) {
             console.warn('logout helper failed', e);
-        }
-        try {
-            if (auth && typeof auth.signOut === 'function') await auth.signOut();
-        } catch (e) {
-            // ignore
         }
         console.log('User signed out and access revoked');
     };

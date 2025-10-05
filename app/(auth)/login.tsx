@@ -2,19 +2,21 @@ import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View, TextInput, Alert, KeyboardAvoidingView, ScrollView, Platform as RNPlatform } from 'react-native';
 import { useRouter } from 'expo-router';
 
-// native signin
-import GoogleAuthe from '../../components/GoogleAuth';
+
+import { useAuth } from '@/lib/AuthProvider';
+import { useApiClient } from '@/lib/api';
+import GoogleAuthe from '@/components/GoogleAuth';
 
 import * as GoogleAuth from 'expo-auth-session/providers/google';
 import * as WebBrowser from 'expo-web-browser';
 WebBrowser.maybeCompleteAuthSession();
 
-import { useAuth } from '../../lib/AuthProvider';
-import { loginWithEmail, socialRegisterOrLogin, sendForgotPassword } from '../../lib/api';
 
 export default function LoginScreen() {
     const router = useRouter();
     const auth = useAuth();
+    const api = useApiClient();
+    console.log('api methods available', Object.keys(api));
 
     // form
     const [email, setEmail] = useState('');
@@ -75,7 +77,7 @@ export default function LoginScreen() {
 
                 // Call backend to create or login user via social profile
                 setLoading(true);
-                const data = await socialRegisterOrLogin(socialProfile as any);
+                const data = await api.socialRegisterOrLogin(socialProfile as any);
                 // Backend should return a session token and user type
                 if (data?.token) {
                     await auth.signIn(data.token, data.userType || 'comprador');
@@ -94,7 +96,7 @@ export default function LoginScreen() {
         setError(null);
         setLoading(true);
         try {
-            const data = await loginWithEmail({ email, password });
+            const data = await api.loginWithEmail({ email, password });
             if (data?.token) {
                 await auth.signIn(data.token, data.userType || 'comprador');
             } else {
@@ -111,7 +113,7 @@ export default function LoginScreen() {
     const onForgot = async () => {
         if (!email) return Alert.alert('Introduce tu correo para recuperar la contraseña');
         try {
-            await sendForgotPassword(email);
+            await api.sendForgotPassword(email);
             Alert.alert('Se ha enviado un correo con instrucciones');
         } catch (err: any) {
             Alert.alert('Error', err?.message || 'No se pudo enviar el correo');
