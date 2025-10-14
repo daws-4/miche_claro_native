@@ -38,7 +38,7 @@ function createApi(baseUrl: string) {
 
   return {
     async loginWithEmail(payload: LoginPayload) {
-      const res = await instance.post('/auth/login', payload);
+      const res = await instance.post('/auth/loginuser', payload);
       return res.data;
     },
 
@@ -54,7 +54,7 @@ function createApi(baseUrl: string) {
 
     // Register a new usuario (matches the Mongoose schema provided)
     async registerUser(payload: RegisterPayload) {
-      const res = await instance.post('/usuarios/register', payload);
+      const res = await instance.post('/auth/registeruser', payload);
       return res.data;
     },
   };

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Platform, Pressable, Text, View, TextInput, Alert, KeyboardAvoidingView, ScrollView, Platform as RNPlatform } from 'react-native';
 import { useRouter } from 'expo-router';
-
+import { EyeOpenIcon, EyeOffIcon } from '@/components/icons';
 
 import { useAuth } from '@/lib/AuthProvider';
 import { useApiClient } from '@/lib/api';
@@ -16,12 +16,12 @@ export default function LoginScreen() {
     const router = useRouter();
     const auth = useAuth();
     const api = useApiClient();
-    console.log('api methods available', Object.keys(api));
 
     // form
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [loading, setLoading] = useState(false);
+    const [showPassword, setShowPassword] = useState(false);
     const [error, setError] = useState<string | null>(null);
 
     // Web google auth
@@ -101,10 +101,12 @@ export default function LoginScreen() {
                 await auth.signIn(data.token, data.userType || 'comprador');
             } else {
                 setError('Invalid response from server');
+                Alert.alert('Error', 'Respuesta inválida del servidor');
             }
         } catch (err: any) {
             console.error('login error', err);
             setError(err?.message || 'Login failed');
+            Alert.alert('Error', err?.message || 'No se pudo iniciar sesión');
         } finally {
             setLoading(false);
         }
@@ -140,16 +142,22 @@ export default function LoginScreen() {
                             />
                         </View>
 
-                        <View className="mb-2">
-                            <Text className="mb-2 text-sm text-neutral-700 dark:text-neutral-300">Contraseña</Text>
+                        <View style={{ flexDirection: 'row', alignItems: 'center', backgroundColor: '#fff', borderRadius: 14, marginBottom: 16, height: 56 }}>
                             <TextInput
                                 value={password}
                                 onChangeText={setPassword}
                                 placeholder="Contraseña"
-                                secureTextEntry
+                                secureTextEntry={!showPassword}
+                                autoCapitalize="none"
                                 className="px-5 py-4 rounded-xl bg-white dark:bg-dark-secondary text-lg"
-                                style={{ height: 56 }}
+                                style={{ flex: 1, height: 56 }}
                             />
+                            <Pressable className='pr-6' onPress={() => setShowPassword(v => !v)} style={{ padding: 8 }}>
+                                {showPassword
+                                    ? <EyeOpenIcon style={{ fontSize: 20 }} />
+                                    : <EyeOffIcon style={{ fontSize: 20 }} />}
+                                {/* Ejemplo: <EyeOpenIcon /> o <EyeClosedIcon /> */}
+                            </Pressable>
                         </View>
 
                         <Pressable onPress={onForgot} className="mb-4 mt-2">
@@ -158,22 +166,22 @@ export default function LoginScreen() {
 
                         {error && <Text className="text-sm text-red-500 mb-2">{error}</Text>}
 
-                        <Pressable onPress={onSubmit} className="bg-blue-500 py-4 rounded-xl mb-3">
-                            <Text className="text-center text-white font-semibold text-lg">Iniciar sesión</Text>
+                        <Pressable onPress={onSubmit} className="bg-blue-500 py-4 rounded-xl mb-3" disabled={loading} style={loading ? { opacity: 0.6 } : {}}>
+                            <Text className="text-center text-white font-semibold text-lg">{loading ? 'Cargando...' : 'Iniciar sesión'}</Text>
                         </Pressable>
 
                         <View className="mt-2 space-y-3">
-                            <Pressable onPress={() => router.push('/register')} className="py-3 rounded-xl border border-neutral-300">
+                            <Pressable onPress={() => router.push('/register_usuario')} className="py-3 rounded-xl border border-neutral-300">
                                 <Text className="text-center text-neutral-800 dark:text-neutral-100 font-medium">Registrarse</Text>
                             </Pressable>
 
                             <View className="items-center">
                                 {Platform.OS === 'web' ? (
-                                    <Pressable onPress={() => promptAsync()} className="py-2 px-4 border rounded-lg border-neutral-300">
-                                        <Text>Iniciar sesión con Google (web)</Text>
+                                    <Pressable onPress={() => promptAsync()} className="py-2 px-4 border rounded-lg border-neutral-300" disabled={loading} style={loading ? { opacity: 0.6 } : {}}>
+                                        <Text>{loading ? 'Cargando...' : 'Iniciar sesión con Google (web)'}</Text>
                                     </Pressable>
                                 ) : (
-                                    <GoogleAuthe defaultUserType="comprador" />
+                                    <GoogleAuthe defaultUserType="comprador" disabled={loading} />
                                 )}
                             </View>
                         </View>
@@ -182,10 +190,10 @@ export default function LoginScreen() {
                 {/* Footer buttons near bottom */}
                 <View style={{ position: 'absolute', left: 0, right: 0, bottom: 20 }} className="px-6">
                     <View className="flex-row justify-between">
-                        <Pressable onPress={() => router.push('/vendedores')} className="px-3 py-2 rounded-lg border border-neutral-200 bg-white/60">
+                        <Pressable onPress={() => router.push('/login_vendedor')} className="px-3 py-2 rounded-lg border border-neutral-200 bg-white/60">
                             <Text>Ingresar como vendedor</Text>
                         </Pressable>
-                        <Pressable onPress={() => router.push('/deliverys')} className="px-3 py-2 rounded-lg border border-neutral-200 bg-white/60">
+                        <Pressable onPress={() => router.push('/login_delivery')} className="px-3 py-2 rounded-lg border border-neutral-200 bg-white/60">
                             <Text>Ingresar como delivery</Text>
                         </Pressable>
                     </View>

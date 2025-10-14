@@ -37,7 +37,7 @@ export const signOutGoogle = async () => {
     }
 };
 
-const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'delivery' }> = ({ defaultUserType = 'comprador' }) => {
+const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'delivery'; disabled?: boolean }> = ({ defaultUserType = 'comprador', disabled = false }) => {
     const [initializing, setInitializing] = useState(true);
 
     const [user, setUser] = useState<any>(null);
@@ -120,11 +120,12 @@ const GoogleAuthe: React.FC<{ defaultUserType?: 'comprador' | 'vendedor' | 'deli
                 size={GoogleSigninButton.Size.Wide}
                 color={GoogleSigninButton.Color.Dark}
                 onPress={async () => {
+                    if (disabled) return;
                     const user = await signIn();
-
                     console.log(user, "user");
                     // initiate sign in
                 }}
+                disabled={disabled}
             />
 
             {user && <Text>{user.email}</Text>}
